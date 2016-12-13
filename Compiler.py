@@ -2,38 +2,7 @@
 address = input("Enter assembly file location:    ")
 fileInstructions = open(address,"r")
 fileBinary = open("BIN"+address,"a")
-for line in fileInstructions:
-    currentInst = list()
-    #print(line.rstrip("\n"))
-    line = line.rstrip("\n")
-    instruction = (line.rstrip(" "))[0:3]
-    argument = (line.rstrip(" "))[4:9]
-    print(instruction)
-    print(argument)
-    if instruction == "ADD":
-        currentInst.append("1")
-    if instruction == "SUB":
-        currentInst.append("2")
-    if instruction == "STR":
-        #print("STR")
-        currentInst.append("3")
-    if instruction == "JMZ":
-        currentInst.append("4")
-    if instruction == "JPL":
-        currentInst.append("5")
-    if instruction == "JMP":
-        #print("JMP")
-        currentInst.append("6")
-    if instruction == "7":
-        #print("LDA")
-        currentInst.append("7")
-    if instruction == "8":
-        #print("OUT")
-        currentInst.append("8")
-        print(acc)
-        output(argument)
-#fileInstructions.readline()
-
+program = list()
 def fullIntToBin(integer):
     if integer < 32768:
         if integer >= 0:
@@ -46,14 +15,45 @@ def fullIntToBin(integer):
     else:
         raise(OverflowError)
 
-def fullBinToInt(binary):
-    if binary[0] == "1":
-        #it's negative
-        print(binary)
-        binary = binary[1:16]
-        print(binary)
-        return((int(binary, 2)*-1))
-    elif binary[0] == "0":
-        #it's postive
-        binary = binary[1:16]
-        return(int(binary, 2))
+for line in fileInstructions:
+    currentInst = list()
+    print(line.rstrip("\n"))
+    line = line.rstrip("\n")
+    instruction = (line.rstrip(" "))[0:3]
+    argument = (line.rstrip(" "))[4:9]
+    if instruction == "ADD":
+        currentInst.append("1")
+    elif instruction == "SUB":
+        currentInst.append("2")
+    elif instruction == "STR":
+        print("STR")
+        currentInst.append("3")
+    elif instruction == "JMZ":
+        currentInst.append("4")
+    elif instruction == "JPL":
+        currentInst.append("5")
+    elif instruction == "JMP":
+        #print("JMP")
+        currentInst.append("6")
+    elif instruction == "LDA":
+        #print("LDA")
+        currentInst.append("7")
+    elif instruction == "OUT":
+        #print("OUT")
+        currentInst.append("8")
+        #print(acc)
+        #output(argument)
+    currentInst.append(argument)
+    toBinary = "".join(currentInst)
+    #print(toBinary+"toBin")
+    toBinary = fullIntToBin(int(toBinary))
+    program.append(toBinary)
+    #print(currentInst)
+
+for codeLine in program:
+    print(codeLine, file=fileBinary)
+
+fileInstructions.close()
+fileBinary.close()
+#fileInstructions.readline()
+
