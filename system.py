@@ -3,7 +3,7 @@
 #int to 16bit
 #fetch decode execute
 totalMem = 0
-locations = 9
+locations = 16
 #IO
 
 acc = 0 #Accumulator is in base 10 for simplicity, and so that signs works.
@@ -177,10 +177,15 @@ memory[5] = '0000000000100110'
 memory[6] = '0000000000110010'
 memory[7] = '0000000000000001'
 memory[8] = '0000000000000001'
+memory[9] = '1000000000000000'
 
 while ProgCounter < locations:
     #print(memory[ProgCounter])
     #print(acc)
-    decodeExec(fetch())
-    ProgCounter = int(ProgCounter) + 1
+    if fetch() == '1000000000000000':
+        print("End of program")
+        break
+    else:
+        decodeExec(fetch())
+        ProgCounter = int(ProgCounter) + 1
         

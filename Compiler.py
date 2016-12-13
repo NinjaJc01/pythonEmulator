@@ -47,6 +47,8 @@ for line in fileInstructions:
     toBinary = "".join(currentInst)
     #print(toBinary+"toBin")
     toBinary = fullIntToBin(int(toBinary))
+    if instruction == "HLT":
+        toBinary = "1000000000000000"
     program.append(toBinary)
     #print(currentInst)
 
