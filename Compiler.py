@@ -43,14 +43,17 @@ for line in fileInstructions:
         currentInst.append("8")
         #print(acc)
         #output(argument)
+    elif instruction == "DAT":
+        currentInst.append("0")
     currentInst.append(argument)
     toBinary = "".join(currentInst)
+    
     #print(toBinary+"toBin")
     toBinary = fullIntToBin(int(toBinary))
     if instruction == "HLT":
         toBinary = "1000000000000000"
     program.append(toBinary)
-    #print(currentInst)
+    print(currentInst)
 
 for codeLine in program:
     print(codeLine, file=fileBinary)

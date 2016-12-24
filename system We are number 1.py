@@ -3,7 +3,7 @@
 #int to 16bit
 #fetch decode execute
 totalMem = 0
-locations = 16
+locations = 48
 #IO
 
 acc = 0 #Accumulator is in base 10 for simplicity, and so that signs works.
@@ -116,6 +116,7 @@ def loadAcc(loc):
 
 def output(form):
     global acc
+    print(chr(acc))
     if form == 0:
         print(acc)
     if form == 1:
@@ -168,17 +169,51 @@ def decodeExec(data):
     elif instruction == "0":
         print("End of program")
 
-memory[0] = '0000000001001101'
-memory[1] = '0000000000010010'
-memory[2] = '0000000000100101'
-memory[3] = '0000000001010000'
-memory[4] = '0000000000011100'
-memory[5] = '0000000000100110'
-memory[6] = '0000000000110010'
-memory[7] = '0000000000000001'
-memory[8] = '0000000000000001'
-memory[9] = '1000000000000000'
-
+memory[0] = '0000001011011101'
+memory[1] = '0000000001010001'
+memory[2] = '0000001011011110'
+memory[3] = '0000000001010001'
+memory[4] = '0000001011011111'
+memory[5] = '0000000001010001'
+memory[6] = '0000001011100000'
+memory[7] = '0000000001010001'
+memory[8] = '0000001011100001'
+memory[9] = '0000000001010001'
+memory[10] = '0000001011011110'
+memory[11] = '0000000001010001'
+memory[12] = '0000001011011111'
+memory[13] = '0000000001010001'
+memory[14] = '0000001011100010'
+memory[15] = '0000000001010001'
+memory[16] = '0000001011100011'
+memory[17] = '0000000001010001'
+memory[18] = '0000001011100100'
+memory[19] = '0000000001010001'
+memory[20] = '0000001011100101'
+memory[21] = '0000000001010001'
+memory[22] = '0000001011011110'
+memory[23] = '0000000001010001'
+memory[24] = '0000001011100001'
+memory[25] = '0000000001010001'
+memory[26] = '0000001011011111'
+memory[27] = '0000000001010001'
+memory[28] = '0000001011100110'
+memory[29] = '0000000001010001'
+memory[30] = '0000001011100111'
+memory[31] = '0000000001010001'
+memory[32] = '1000000000000000'
+memory[33] = '0000000001010111'
+memory[34] = '0000000001100101'
+memory[35] = '0000000000100000'
+memory[36] = '0000000001100001'
+memory[37] = '0000000001110010'
+memory[38] = '0000000001101110'
+memory[39] = '0000000001110101'
+memory[40] = '0000000001101101'
+memory[41] = '0000000001100010'
+memory[42] = '0000000000110001'
+memory[43] = '0000000000100001'
+print(showRAMInt(memory))
 while ProgCounter < locations:
     #print(memory[ProgCounter])
     #print(acc)
