@@ -1,0 +1,4 @@
+INP 0
+STR 99
+ADD 99
+OUT 0
